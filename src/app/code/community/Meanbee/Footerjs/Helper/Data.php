@@ -26,6 +26,10 @@ class Meanbee_Footerjs_Helper_Data extends Mage_Core_Helper_Abstract {
      */
     public function isEnabled($store = null)
     {
+        if (Mage::app()->getRequest()->isAjax()) {
+            return false;
+        }
+        
         return Mage::getStoreConfigFlag(self::XML_CONFIG_FOOTERJS_ENABLED, $store);
     }
 
